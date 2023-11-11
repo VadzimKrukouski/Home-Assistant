@@ -1,0 +1,29 @@
+server:
+  port: 8095
+spring:
+  jpa:
+    database: postgresql
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ha
+    driver-class-name: org.postgresql.Driver
+    username: cwbp
+    password: cwbp
+  flyway:
+    table: flyway_version
+    baseline-version: 0
+    baseline-on-migrate: true
+    schemas: public
+    locations: classpath:db/migration
+  mvc:
+    dispatch-options-request: true
+
+client:
+    url: http://localhost:4200
+

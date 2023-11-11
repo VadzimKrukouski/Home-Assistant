@@ -1,0 +1,51 @@
+<div class="form-field-wrapper" [title]="placeholder">
+  <mat-form-field [ngSwitch]="type" appearance="fill">
+    <mat-label *ngIf="placeholder">{{ placeholder }}</mat-label>
+    <input
+      *ngSwitchCase="FormFieldTypes.DATE"
+      (focus)="onTouched()"
+      [maxlength]="maxLength"
+      [formControl]="fc"
+      [value]="value | date: 'dd-MM-yyyy HH:mm:ss'"
+      matInput
+      [placeholder]="placeholder"
+    />
+    <input
+      *ngSwitchCase="FormFieldTypes.TEXT"
+      (focus)="onTouched()"
+      [maxlength]="maxLength"
+      [formControl]="fc"
+      matInput
+      [placeholder]="placeholder"
+      [type]="value"
+    />
+    <input
+      *ngSwitchCase="FormFieldTypes.NUMBER"
+      (focus)="onTouched()"
+      [formControl]="fc"
+      matInput
+      [placeholder]="placeholder"
+      [type]="value"
+    />
+<!--    <input-->
+<!--      *ngSwitchCase="FormFieldTypes.RETURN_VALUE"-->
+<!--      (focus)="onTouched()"-->
+<!--      [maxlength]="maxLength"-->
+<!--      [formControl]="fc"-->
+<!--      matInput-->
+<!--      [placeholder]="placeholder"-->
+<!--      [type]="type"-->
+<!--      (blur)="sendValue($event.target.value)"-->
+<!--    />-->
+    <input
+      *ngSwitchDefault
+      (focus)="onTouched()"
+      [maxlength]="maxLength"
+      [formControl]="fc"
+      matInput
+      [placeholder]="placeholder"
+      [type]="value"
+    />
+  </mat-form-field>
+</div>
+

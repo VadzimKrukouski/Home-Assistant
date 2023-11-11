@@ -1,0 +1,17 @@
+<button (click) = "changeDisable()">клик</button>
+
+<button *ngIf="disabled">кнопка</button>
+
+<p>{{name}}</p>
+
+<button (click)="return()">на главную</button>
+<br>
+<button (click)="getData()">Получить</button>
+
+<p>{{meterReading}}</p>
+<br>
+
+<input [(ngModel)] = "meterReading"/>
+<button (click)="createData()">Отправить</button>
+<p>{{meterReading}}</p>
+

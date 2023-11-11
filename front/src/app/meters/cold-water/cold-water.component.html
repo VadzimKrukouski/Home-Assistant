@@ -1,0 +1,57 @@
+<body>
+<h1>Cold water meter data</h1>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <div class="group">
+    <input name="meterReading" ngModel required>
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Meter Reading</label>
+  </div>
+  <div style="padding: 20px 0 0 0;">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" name="date" ngModel placeholder="Choose a date">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="month"></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <button type="submit" class="btn btn--default btn--size-XL center">Submit</button>
+</form>
+<br>
+<div class="container">
+  <div class="row">
+    <button type="button" (click)="return()" class="btn btn--default btn--size-XL center">Back</button>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <button type="button" (click)="returnToHomePage()" class="btn btn--default btn--size-XL center">To Homepage</button>
+  </div>
+</div>
+</body>
+<div class="container">
+  <div class="card material-table">
+    <div class="table-header">
+      <span class="table-title">Cold water meters data</span>
+    </div>
+    <table class="datatable">
+      <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">MeterReading</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr scope="row" *ngFor="let meter of meters">
+        <td>{{meter.date}}</td>
+        <td>{{meter.meterReading}}</td>
+      </tr>
+      <!--      <tr scope="row" *ngIf="meters.length === 0">-->
+      <!--        <td colspan="6" class="text-center">No record found</td>-->
+      <!--      </tr>-->
+      </tbody>
+    </table>
+    <!--    <mat-paginator [pageSizeOptions]="[10, 25, 100]" [pageSize]="10"></mat-paginator>-->
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<!--<body>-->
+<div class="container">
+  <div class="card material-table">
+    <div class="table-header">
+      <span class="table-title">Last added bills</span>
+    </div>
+    <table class="datatable">
+      <thead>
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Store</th>
+        <th scope="col">Date</th>
+        <th scope="col">Description</th>
+        <th scope="col">Sum</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr scope="row" *ngFor="let bill of bills">
+        <td>{{bill.typeBills}}</td>
+        <td>{{bill.storeName}}</td>
+        <td>{{bill.date}}</td>
+        <td>{{bill.description}}</td>
+        <td>{{bill.sum}}</td>
+      </tr>
+      <tr scope="row" *ngIf="bills.length === 0">
+        <td colspan="6" class="text-center">No record found</td>
+      </tr>
+      </tbody>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 25, 100]" [pageSize]="10" [length]="totalElements" (page)="nextPage($event)"></mat-paginator>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <button type="button" (click)="return()" class="btn btn--default btn--size-XL center">Back</button>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <button type="button" (click)="returnToHomePage()" class="btn btn--default btn--size-XL center">To Homepage</button>
+  </div>
+</div>
+<!--</body>-->

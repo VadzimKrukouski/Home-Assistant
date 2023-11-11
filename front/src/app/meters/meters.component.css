@@ -1,0 +1,72 @@
+:root {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  background: #C0C0C0;
+}
+
+body,
+html,
+.container,
+.row {
+  height: 100%;
+}
+
+.container {
+  padding-right: 2rem;
+  padding-left: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+  /*background-image: url("../../assets/img/wolf-647528_1280.jpg");*/
+  /*background-size: auto;*/
+}
+
+.row {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 6px 12px;
+  border: 0;
+  outline: 0;
+}
+.btn--default {
+  background: #0000FF;
+  color: #fff;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 100px;
+  box-shadow: 0 4px 12px 4px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  position: relative;
+  transition: background 200ms ease-in, transform 100ms linear;
+}
+.btn--default:hover {
+  background: #ADFF2F;
+}
+.btn--default:active {
+  transform: scale(0.9);
+}
+.btn--size-L {
+  padding: 8px 16px;
+}
+.btn--size-XL {
+  padding: 16px 32px;
+}

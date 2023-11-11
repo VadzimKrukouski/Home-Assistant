@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  color: #f1d106;
+  text-transform: uppercase;
+  background: linear-gradient(#5f6569 0, #373a3f 25%, #212426 50%, #050404 75%, #090707 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #090707;
+}
+
+.container {
+  padding-right: 2rem;
+  padding-left: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 6px 12px;
+  border: 0;
+  outline: 0;
+}
+.btn--default {
+  background: #ebf309;
+  color: #0a0000;
+  font-weight: 1000;
+  text-transform: uppercase;
+  border-radius: 1000px;
+  box-shadow: 0 4px 12px 4px rgba(252, 233, 1, 0.82);
+  overflow: hidden;
+  position: relative;
+  transition: background 200ms ease-in, transform 100ms linear;
+}
+.btn--default:hover {
+  background: #0ef1de;
+  box-shadow: 0 4px 12px 4px rgb(8, 238, 208);
+
+}
+.btn--default:active {
+  transform: scale(0.9);
+}
+.btn--size-L {
+  padding: 8px 16px;
+}
+.btn--size-XL {
+  padding: 20px 40px;
+}
