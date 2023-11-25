@@ -1,0 +1,76 @@
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# VUGen files
+*.tmp
+*.bak
+*.log
+*.sdf
+*.c.pickle
+*.ci
+*.idx
+*.orig
+smsResult[1234567890]*/
+combined_*.c
+Breakpoints.xml
+ReplaySummaryReport.xml
+UserTasks.xml
+CompilerLogMetadata.xml
+ThumbnailsCache.tmp
+logfile.log
+mdrv_cmd.txt
+options.txt
+output.txt
+data.zip
+TransactionsData.db
+ScriptUploadMetadata.xml
+scripts/IB/IB_DEPOSIT/IB_Page_Login.c
+scripts/IB/IB_DEPOSIT/IB_Page_Login.c
+
+# Idea files
+.idea
+.*\.iml
+*.iml
+
+# Gradle files
+target
+.gradle
+/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Jdbc files
+.*\.jrnl
+.*\.log
+
+#git
+*.git/
+*.gitlab-ci.yml
+
+
+
+
+
