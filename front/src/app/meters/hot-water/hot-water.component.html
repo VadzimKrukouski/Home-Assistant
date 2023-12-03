@@ -1,44 +1,94 @@
 <body>
-<h1>Hot water meter data</h1>
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-  <div class="group">
-    <input name="meterReading" ngModel required>
-    <span class="highlight"></span>
-    <span class="bar"></span>
-    <label>Meter Reading</label>
-  </div>
-  <div style="padding: 20px 0 0 0;">
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker" name="date" ngModel placeholder="Choose a date">
-      <mat-hint>DD/MM/YYYY</mat-hint>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker startView="month"></mat-datepicker>
-    </mat-form-field>
-  </div>
-  <button type="submit" class="btn btn--default btn--size-XL center">Submit</button>
-</form>
+<mat-tab-group mat-align-tabs="center" >
+  <mat-tab label="All Data">
+    <ng-template matTabContent>
+      <div class="container">
+        <div class="card material-table">
+          <div class="table-header">
+            <span class="table-title">Hot water meters data</span>
+          </div>
+          <table class="datatable">
+            <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">MeterReading</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr scope="row" *ngFor="let meter of meters">
+              <td>{{meter.date}}</td>
+              <td>{{meter.meterReading}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Fill Data">
+    <ng-template matTabContent>
+      <h1>Hot water meter data</h1>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+        <div class="group">
+          <input name="meterReading" ngModel required>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Meter Reading</label>
+        </div>
+        <div style="padding: 20px 0 0 0;">
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" name="date" ngModel placeholder="Choose a date">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker startView="month"></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <button type="submit" class="btn btn--default btn--size-XL center">Submit</button>
+      </form>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
 <br>
-<div class="container">
-  <div class="card material-table">
-    <div class="table-header">
-      <span class="table-title">Hot water meters data</span>
-    </div>
-    <table class="datatable">
-      <thead>
-      <tr>
-        <th scope="col">Date</th>
-        <th scope="col">MeterReading</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr scope="row" *ngFor="let meter of meters">
-        <td>{{meter.date}}</td>
-        <td>{{meter.meterReading}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<!--<h1>Hot water meter data</h1>-->
+<!--<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>-->
+<!--  <div class="group">-->
+<!--    <input name="meterReading" ngModel required>-->
+<!--    <span class="highlight"></span>-->
+<!--    <span class="bar"></span>-->
+<!--    <label>Meter Reading</label>-->
+<!--  </div>-->
+<!--  <div style="padding: 20px 0 0 0;">-->
+<!--    <mat-form-field>-->
+<!--      <input matInput [matDatepicker]="picker" name="date" ngModel placeholder="Choose a date">-->
+<!--      <mat-hint>DD/MM/YYYY</mat-hint>-->
+<!--      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--      <mat-datepicker #picker startView="month"></mat-datepicker>-->
+<!--    </mat-form-field>-->
+<!--  </div>-->
+<!--  <button type="submit" class="btn btn&#45;&#45;default btn&#45;&#45;size-XL center">Submit</button>-->
+<!--</form>-->
+<br>
+<!--<div class="container">-->
+<!--  <div class="card material-table">-->
+<!--    <div class="table-header">-->
+<!--      <span class="table-title">Hot water meters data</span>-->
+<!--    </div>-->
+<!--    <table class="datatable">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th scope="col">Date</th>-->
+<!--        <th scope="col">MeterReading</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr scope="row" *ngFor="let meter of meters">-->
+<!--        <td>{{meter.date}}</td>-->
+<!--        <td>{{meter.meterReading}}</td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--</div>-->
 <br>
 <div class="container">
   <div class="row">

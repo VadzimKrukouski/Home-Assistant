@@ -70,7 +70,10 @@ gradle-app.setting
 *.git/
 *.gitlab-ci.yml
 
-
+# Package Files #
+*.jar
+*.war
+*.ear
 
 
 
