@@ -36,6 +36,3 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-task prepareKotlinBuildScriptModel {
-
-}
