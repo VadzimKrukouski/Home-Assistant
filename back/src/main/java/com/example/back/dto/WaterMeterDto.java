@@ -17,4 +17,6 @@ public class WaterMeterDto extends BaseDto implements Serializable {
     private TypeWater typeWater;
 
     private BigDecimal meterReading;
+
+    private BigDecimal diff;
 }

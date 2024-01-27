@@ -12,12 +12,14 @@
             <tr>
               <th scope="col">Date</th>
               <th scope="col">MeterReading</th>
+              <th scope="col">Diff</th>
             </tr>
             </thead>
             <tbody>
             <tr scope="row" *ngFor="let meter of meters">
               <td>{{meter.date}}</td>
               <td>{{meter.meterReading}}</td>
+              <td>{{meter.diff}}</td>
             </tr>
             </tbody>
           </table>
