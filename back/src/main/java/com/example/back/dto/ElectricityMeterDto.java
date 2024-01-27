@@ -13,4 +13,6 @@ public class ElectricityMeterDto extends BaseDto implements Serializable {
     private Long id;
 
     private Integer meterReading;
+
+    private Integer diff;
 }

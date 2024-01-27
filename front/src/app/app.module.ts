@@ -28,6 +28,7 @@ import { BillsInfoComponent } from './bills/bills-info/bills-info.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { HotWaterComponent } from './meters/hot-water/hot-water.component';
 import { ColdWaterComponent } from './meters/cold-water/cold-water.component';
+import { ElectricityComponent } from './meters/electricity/electricity.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ColdWaterComponent } from './meters/cold-water/cold-water.component';
     StartBillsComponent,
     BillsInfoComponent,
     HotWaterComponent,
-    ColdWaterComponent
+    ColdWaterComponent,
+    ElectricityComponent
   ],
   imports: [
     BrowserModule,

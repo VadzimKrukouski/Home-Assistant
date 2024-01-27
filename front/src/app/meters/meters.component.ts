@@ -42,6 +42,10 @@ export class MetersComponent implements OnInit {
     this.router.navigate(['/cold-water-data'])
   }
 
+  dataElectricity() {
+    this.router.navigate(['/electricity-data'])
+  }
+
   getData(request) {
     this.waterService.getData(request)
       .subscribe(data => {
