@@ -51,46 +51,16 @@
   </mat-tab>
 </mat-tab-group>
 <br>
-<!--<h1>Hot water meter data</h1>-->
-<!--<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>-->
-<!--  <div class="group">-->
-<!--    <input name="meterReading" ngModel required>-->
-<!--    <span class="highlight"></span>-->
-<!--    <span class="bar"></span>-->
-<!--    <label>Meter Reading</label>-->
-<!--  </div>-->
-<!--  <div style="padding: 20px 0 0 0;">-->
-<!--    <mat-form-field>-->
-<!--      <input matInput [matDatepicker]="picker" name="date" ngModel placeholder="Choose a date">-->
-<!--      <mat-hint>DD/MM/YYYY</mat-hint>-->
-<!--      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-<!--      <mat-datepicker #picker startView="month"></mat-datepicker>-->
-<!--    </mat-form-field>-->
-<!--  </div>-->
-<!--  <button type="submit" class="btn btn&#45;&#45;default btn&#45;&#45;size-XL center">Submit</button>-->
-<!--</form>-->
-<br>
-<!--<div class="container">-->
-<!--  <div class="card material-table">-->
-<!--    <div class="table-header">-->
-<!--      <span class="table-title">Hot water meters data</span>-->
-<!--    </div>-->
-<!--    <table class="datatable">-->
-<!--      <thead>-->
-<!--      <tr>-->
-<!--        <th scope="col">Date</th>-->
-<!--        <th scope="col">MeterReading</th>-->
-<!--      </tr>-->
-<!--      </thead>-->
-<!--      <tbody>-->
-<!--      <tr scope="row" *ngFor="let meter of meters">-->
-<!--        <td>{{meter.date}}</td>-->
-<!--        <td>{{meter.meterReading}}</td>-->
-<!--      </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
-<!--  </div>-->
-<!--</div>-->
+<div class="container">
+  <div class="row">
+    <button type="button" (click)="getChart()" class="btn btn--default btn--size-XL center">Get Chart</button>
+  </div>
+</div>
+<br/>
+<div class="chart-container" style="position: relative; height:60vh; width:120vw">
+  <canvas id="MyChart">{{chart}}</canvas>
+</div>
+<br/>
 <br>
 <div class="container">
   <div class="row">

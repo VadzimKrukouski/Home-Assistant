@@ -4,6 +4,7 @@ import {WaterMetersControllerService} from "../../api/water-meters-controller.se
 import {NgForm} from "@angular/forms";
 import {TypeWater} from "../meters.component";
 import {WaterMeterDto} from "../../models/waterMeterDto";
+import {ChartService} from "../../service/chart.service";
 
 @Component({
   selector: 'app-cold-water',
@@ -12,9 +13,11 @@ import {WaterMeterDto} from "../../models/waterMeterDto";
 })
 export class ColdWaterComponent implements OnInit {
   meters: WaterMeterDto[] = [];
+  chart: any;
 
   constructor(private router: Router,
-              private waterService: WaterMetersControllerService) {
+              private waterService: WaterMetersControllerService,
+              private chartService: ChartService) {
   }
 
   ngOnInit(): void {
@@ -49,4 +52,7 @@ export class ColdWaterComponent implements OnInit {
     this.router.navigate(['/start'])
   }
 
+  getChart() {
+    this.chart = this.chartService.createChart(this.meters);
+  }
 }

@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {WaterMetersControllerService} from "../../api/water-meters-controller.service";
 import {MetersComponent, TypeWater} from "../meters.component";
 import {WaterMeterDto} from "../../models/waterMeterDto";
+import {ChartService} from "../../service/chart.service";
 
 @Component({
   selector: 'app-hot-water',
@@ -12,17 +13,17 @@ import {WaterMeterDto} from "../../models/waterMeterDto";
 })
 export class HotWaterComponent implements OnInit {
   meters: WaterMeterDto[] = [];
+  chart: any;
 
   constructor(private router: Router,
               private waterService: WaterMetersControllerService,
-              private metersComponent: MetersComponent) {
+              private metersComponent: MetersComponent,
+              private chartService: ChartService) {
   }
 
 
   ngOnInit(): void {
-    // this.meters = this.metersComponent.findMetersData({type: "HOT"});
     this.getData({type: "HOT"})
-    console.log("HWC meters = " + this.meters)
   }
 
   getData(request) {
@@ -51,5 +52,9 @@ export class HotWaterComponent implements OnInit {
 
   returnToHomePage() {
     this.router.navigate(['/start'])
+  }
+
+  getChart() {
+    this.chart = this.chartService.createChart(this.meters);
   }
 }
