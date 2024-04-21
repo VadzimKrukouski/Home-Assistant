@@ -43,6 +43,7 @@ export class BillsInfoComponent implements OnInit {
   private getGeneralStatistic() {
     this.statisticService.getGeneralStatisticByMonth().subscribe(data => {
         this.generalStatistics = data;
+        this.generalStatistics.forEach(t => t.date = (t.date?.substring(0, 7)));
         console.log("Statistics: " + this.generalStatistics);
       },
       error => {
