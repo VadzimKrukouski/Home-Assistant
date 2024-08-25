@@ -1,0 +1,57 @@
+<body>
+<h1>Monthly statistics</h1>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <div class="custom-select">
+    <select name="typeBill" ngModel>
+      <option *ngFor="let typeBill of types" [ngValue]="typeBill">{{TypeMapping[typeBill]}}</option>
+    </select>
+    <label>Type Bills</label>
+  </div>
+  <br>
+  <button type="submit" class="btn btn--default btn--size-XL center">Submit</button>
+</form>
+<br>
+<div class="container">
+  <div class="card material-table">
+    <div class="table-header">
+      <span class="table-title">General bills statistic by month</span>
+    </div>
+    <table class="datatable">
+      <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Sum</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr scope="row" *ngFor="let statistic of generalStatistics">
+        <td>{{statistic.date}}</td>
+        <td>{{statistic.sum}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <button type="button" (click)="getChart()" class="btn btn--default btn--size-XL center">Get Chart</button>
+  </div>
+</div>
+<br/>
+<div class="chart-container" style="position: relative; height:60vh; width:120vw">
+  <canvas id="MyChart">{{chart}}</canvas>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <button type="button" (click)="return()" class="btn btn--default btn--size-XL center">Back</button>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <button type="button" (click)="returnToHomePage()" class="btn btn--default btn--size-XL center">To Homepage</button>
+  </div>
+</div>
+</body>

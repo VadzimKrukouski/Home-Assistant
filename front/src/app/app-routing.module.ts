@@ -9,6 +9,7 @@ import {BillsInfoComponent} from "./bills/bills-info/bills-info.component";
 import {HotWaterComponent} from "./meters/hot-water/hot-water.component";
 import {ColdWaterComponent} from "./meters/cold-water/cold-water.component";
 import {ElectricityComponent} from "./meters/electricity/electricity.component";
+import {MonthInfoByTypeComponent} from "./bills/month-info-by-type/month-info-by-type.component";
 
 const routes: Routes = [
   {path: '', component: StartComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'infoBills', component: BillsInfoComponent},
   {path: 'hot-water-data', component: HotWaterComponent},
   {path: 'cold-water-data', component: ColdWaterComponent},
-  {path: 'electricity-data', component: ElectricityComponent}
+  {path: 'electricity-data', component: ElectricityComponent},
+  {path: 'monthStatistic', component:MonthInfoByTypeComponent}
 ];
 
 @NgModule({

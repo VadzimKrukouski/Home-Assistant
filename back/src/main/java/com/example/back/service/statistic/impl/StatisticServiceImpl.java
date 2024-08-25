@@ -2,9 +2,11 @@ package com.example.back.service.statistic.impl;
 
 import com.example.back.dto.statistic.GeneralStatisticDto;
 import com.example.back.dto.statistic.GeneralStatisticQueryData;
+import com.example.back.dto.statistic.MonthStatisticDto;
 import com.example.back.repository.BillsRepository;
 import com.example.back.service.statistic.StatisticService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class StatisticServiceImpl implements StatisticService {
 
     private final BillsRepository billsRepository;
@@ -27,5 +30,18 @@ public class StatisticServiceImpl implements StatisticService {
             generalStatisticDtos.add(dto);
         });
         return generalStatisticDtos;
+    }
+
+    @Override
+    public List<MonthStatisticDto> getMonthlyStatisticByType(String type) {
+        log.info("Get monthly statistic by type {}", type);
+        List<MonthStatisticDto> monthStatisticDtos = new ArrayList<>();
+        billsRepository.getStatisticByMonthAndType(type).forEach(s -> {
+            MonthStatisticDto dto = new MonthStatisticDto();
+            dto.setDate(s.getMonth());
+            dto.setSum(s.getSum());
+            monthStatisticDtos.add(dto);
+        });
+        return monthStatisticDtos;
     }
 }

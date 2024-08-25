@@ -30,6 +30,7 @@ import { HotWaterComponent } from './meters/hot-water/hot-water.component';
 import { ColdWaterComponent } from './meters/cold-water/cold-water.component';
 import { ElectricityComponent } from './meters/electricity/electricity.component';
 import {ChartService} from "./service/chart.service";
+import { MonthInfoByTypeComponent } from './bills/month-info-by-type/month-info-by-type.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {ChartService} from "./service/chart.service";
     BillsInfoComponent,
     HotWaterComponent,
     ColdWaterComponent,
-    ElectricityComponent
+    ElectricityComponent,
+    MonthInfoByTypeComponent
   ],
   imports: [
     BrowserModule,

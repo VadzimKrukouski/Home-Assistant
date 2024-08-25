@@ -32,4 +32,30 @@ export class ChartService {
     });
     return this.chart;
   }
+
+  createMonthlyChart(data: any): Chart {
+    this.labeldata = []
+    this.realdata = []
+    data.forEach(meter => {
+      this.labeldata.push(meter.date);
+      this.realdata.push(meter.sum);
+    })
+    this.chart = new Chart("MyChart", {
+      type: 'bar',
+      data: {
+        labels: this.labeldata,
+        datasets: [
+          {
+            label: 'Sum',
+            data: this.realdata,
+            backgroundColor: 'red',
+          }
+        ]
+      },
+      options: {
+        aspectRatio: 2
+      }
+    });
+    return this.chart;
+  }
 }

@@ -5,9 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/v1/statistic",
@@ -22,6 +20,15 @@ public class StatisticController {
     public ResponseEntity<?> getGeneralStatisticByMonth() {
         try {
             return new ResponseEntity<>(service.getGeneralStatisticByMonth(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/monthByType/{type}")
+    public ResponseEntity<?> getMonthlyStatisticByType(@PathVariable String type) {
+        try {
+            return new ResponseEntity<>(service.getMonthlyStatisticByType(type), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

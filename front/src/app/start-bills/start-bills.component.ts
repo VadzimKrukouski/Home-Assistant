@@ -22,6 +22,10 @@ export class StartBillsComponent implements OnInit{
     this.router.navigate(['/infoBills']);
   }
 
+  monthStatistic() {
+    this.router.navigate(['/monthStatistic'])
+  }
+
   returnToHomePage() {
     this.router.navigate(['/start'])
   }
