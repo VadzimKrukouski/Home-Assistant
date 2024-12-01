@@ -16,6 +16,7 @@ export const TypeMapping: Record<TypeBills, string> = {
   [TypeBills.KINDERGARTEN]: "KINDERGARTEN",
   [TypeBills.APARTMENT]: "APARTMENT",
   [TypeBills.RESTAURANTS]: "RESTAURANTS",
+  [TypeBills.TRIPS]: "TRIPS",
   [TypeBills.OTHER]: "OTHER"
 };
 

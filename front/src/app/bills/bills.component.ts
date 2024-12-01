@@ -13,6 +13,7 @@ export enum TypeBills {
   KINDERGARTEN = "KINDERGARTEN",
   APARTMENT = "APARTMENT",
   RESTAURANTS = "RESTAURANTS",
+  TRIPS = "TRIPS",
   OTHER = "OTHER"
 }
 
@@ -24,6 +25,7 @@ export const TypeMapping: Record<TypeBills, string> = {
   [TypeBills.KINDERGARTEN]: "KINDERGARTEN",
   [TypeBills.APARTMENT]: "APARTMENT",
   [TypeBills.RESTAURANTS]: "RESTAURANTS",
+  [TypeBills.TRIPS]: "TRIPS",
   [TypeBills.OTHER]: "OTHER"
 };
 

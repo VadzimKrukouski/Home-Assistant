@@ -8,5 +8,6 @@ public enum TypeBills {
     KINDERGARTEN,
     APARTMENT,
     RESTAURANTS,
+    TRIPS,
     OTHER
 }
