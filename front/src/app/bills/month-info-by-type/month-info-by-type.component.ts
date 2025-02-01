@@ -5,7 +5,6 @@ import {DateAdapter, MAT_DATE_LOCALE} from "@angular/material/core";
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter} from "@angular/material-moment-adapter";
 import {NgForm} from "@angular/forms";
 import {TypeBills} from "../bills.component";
-import {ChartService} from "../../service/chart.service";
 
 export const TypeMapping: Record<TypeBills, string> = {
   [TypeBills.PRODUCTS]: "PRODUCTS",
@@ -35,9 +34,7 @@ export class MonthInfoByTypeComponent implements OnInit {
   public TypeMapping = TypeMapping;
   chart: any;
 
-
-  constructor(private statisticService: StatisticControllerService,
-              private chartService: ChartService) {
+  constructor(private statisticService: StatisticControllerService) {
   }
 
   ngOnInit(): void {
@@ -52,9 +49,4 @@ export class MonthInfoByTypeComponent implements OnInit {
         console.log(error.error.message)
       });
   }
-
-  getChart() {
-    this.chart = this.chartService.createMonthlyChart(this.generalStatistics);
-  }
-
 }

@@ -33,15 +33,7 @@
   </div>
 </div>
 <br>
-<div class="container">
-  <div class="row">
-    <button type="button" (click)="getChart()" class="btn btn--default btn--size-XL center">Get Chart</button>
-  </div>
-</div>
-<br/>
-<div class="chart-container" style="position: relative; height:60vh; width:120vw">
-  <canvas id="MyChart">{{chart}}</canvas>
-</div>
+<app-chart-button [chartData]="generalStatistics" [valueKey]="'sum'" [label]="'Sum'"></app-chart-button>
 <br>
 <app-nav-button [targetRoute]="'/bills'"></app-nav-button>
 <br>

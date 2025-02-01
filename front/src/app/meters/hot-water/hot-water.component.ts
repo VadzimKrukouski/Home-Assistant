@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {WaterMetersControllerService} from "../../api/water-meters-controller.service";
-import {MetersComponent, TypeWater} from "../meters.component";
+import {TypeWater} from "../meters.component";
 import {WaterMeterDto} from "../../models/waterMeterDto";
-import {ChartService} from "../../service/chart.service";
 
 @Component({
   selector: 'app-hot-water',
@@ -12,13 +11,9 @@ import {ChartService} from "../../service/chart.service";
 })
 export class HotWaterComponent implements OnInit {
   meters: WaterMeterDto[] = [];
-  chart: any;
 
-  constructor(private waterService: WaterMetersControllerService,
-              private metersComponent: MetersComponent,
-              private chartService: ChartService) {
+  constructor(private waterService: WaterMetersControllerService) {
   }
-
 
   ngOnInit(): void {
     this.getData({type: "HOT"})
@@ -42,9 +37,5 @@ export class HotWaterComponent implements OnInit {
       date: new Date(f.value.date).toISOString()
     });
     f.resetForm();
-  }
-
-  getChart() {
-    this.chart = this.chartService.createChart(this.meters);
   }
 }

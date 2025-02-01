@@ -30,7 +30,8 @@ import {HotWaterComponent} from './meters/hot-water/hot-water.component';
 import {ColdWaterComponent} from './meters/cold-water/cold-water.component';
 import {ElectricityComponent} from './meters/electricity/electricity.component';
 import {MonthInfoByTypeComponent} from './bills/month-info-by-type/month-info-by-type.component';
-import {NavButtonComponent} from './buttons/home-button/nav-button.component';
+import {NavButtonComponent} from './buttons/nav-button/nav-button.component';
+import { ChartButtonComponent } from './buttons/chart-button/chart-button.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {NavButtonComponent} from './buttons/home-button/nav-button.component';
     ColdWaterComponent,
     ElectricityComponent,
     MonthInfoByTypeComponent,
-    NavButtonComponent
+    NavButtonComponent,
+    ChartButtonComponent
   ],
   imports: [
     BrowserModule,

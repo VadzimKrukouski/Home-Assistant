@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ElectricityDto} from "../../models/ElectricityDto";
 import {ElectricityControllerService} from "../../api/electricity-controller.service";
 import {NgForm} from "@angular/forms";
-import {ChartService} from "../../service/chart.service";
 
 @Component({
   selector: 'app-electricity',
@@ -11,10 +10,8 @@ import {ChartService} from "../../service/chart.service";
 })
 export class ElectricityComponent implements OnInit {
   meters: ElectricityDto[] = [];
-  chart: any;
 
-  constructor(private electricityService: ElectricityControllerService,
-              private chartService: ChartService) {
+  constructor(private electricityService: ElectricityControllerService) {
   }
 
   ngOnInit(): void {
@@ -38,9 +35,5 @@ export class ElectricityComponent implements OnInit {
       meterReading: f.value.meterReading
     });
     f.resetForm();
-  }
-
-  getChart() {
-    this.chart = this.chartService.createChart(this.meters);
   }
 }

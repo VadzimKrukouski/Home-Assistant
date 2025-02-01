@@ -7,12 +7,12 @@ export class ChartService {
   private labeldata: any[] = [];
   private realdata: any[] = [];
 
-  createChart(meters: any) : Chart {
+  createChart(data: any[], label: string, valueKey: keyof any) : Chart {
     this.labeldata = []
     this.realdata = []
-    meters.forEach(meter => {
-      this.labeldata.push(meter.date);
-      this.realdata.push(meter.diff);
+    data.forEach(item => {
+      this.labeldata.push(item.date);
+      this.realdata.push(item[valueKey]);
     })
     this.chart = new Chart("MyChart", {
       type: 'bar',
@@ -20,7 +20,7 @@ export class ChartService {
         labels: this.labeldata,
         datasets: [
           {
-            label: 'Electricity meters',
+            label: label,
             data: this.realdata,
             backgroundColor: 'red',
           }

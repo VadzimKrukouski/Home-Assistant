@@ -3,7 +3,6 @@ import {WaterMetersControllerService} from "../../api/water-meters-controller.se
 import {NgForm} from "@angular/forms";
 import {TypeWater} from "../meters.component";
 import {WaterMeterDto} from "../../models/waterMeterDto";
-import {ChartService} from "../../service/chart.service";
 
 @Component({
   selector: 'app-cold-water',
@@ -12,10 +11,8 @@ import {ChartService} from "../../service/chart.service";
 })
 export class ColdWaterComponent implements OnInit {
   meters: WaterMeterDto[] = [];
-  chart: any;
 
-  constructor(private waterService: WaterMetersControllerService,
-              private chartService: ChartService) {
+  constructor(private waterService: WaterMetersControllerService) {
   }
 
   ngOnInit(): void {
@@ -40,9 +37,5 @@ export class ColdWaterComponent implements OnInit {
       date: new Date(f.value.date).toISOString()
     });
     f.resetForm();
-  }
-
-  getChart() {
-    this.chart = this.chartService.createChart(this.meters);
   }
 }
