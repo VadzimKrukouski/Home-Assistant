@@ -57,13 +57,4 @@ export class BillsInfoComponent implements OnInit {
     request['size'] = event.pageSize.toString();
     this.getBills(request);
   }
-
-  return() {
-    this.router.navigate(['/bills'])
-  }
-
-  returnToHomePage() {
-    this.router.navigate(['/start'])
-  }
-
 }

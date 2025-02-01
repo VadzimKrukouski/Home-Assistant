@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {GeneralStatisticDto} from "../../models/GeneralStatisticDto";
-import {Router} from "@angular/router";
 import {StatisticControllerService} from "../../api/statistic-controller-service";
 import {DateAdapter, MAT_DATE_LOCALE} from "@angular/material/core";
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter} from "@angular/material-moment-adapter";
@@ -29,7 +28,7 @@ export const TypeMapping: Record<TypeBills, string> = {
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: false}}
   ]
 })
-export class MonthInfoByTypeComponent implements OnInit{
+export class MonthInfoByTypeComponent implements OnInit {
   generalStatistics: GeneralStatisticDto[] = [];
   typeBill: string;
   public types = Object.values(TypeBills);
@@ -37,29 +36,20 @@ export class MonthInfoByTypeComponent implements OnInit{
   chart: any;
 
 
-  constructor(private router: Router,
-              private statisticService: StatisticControllerService,
+  constructor(private statisticService: StatisticControllerService,
               private chartService: ChartService) {
   }
 
   ngOnInit(): void {
   }
 
-  return() {
-    this.router.navigate(['/bills'])
-  }
-
-  returnToHomePage() {
-    this.router.navigate(['/start'])
-  }
-
   onSubmit(f: NgForm) {
     this.statisticService.getMonthStatisticByType(f.value.typeBill).subscribe(data => {
-      this.generalStatistics = data;
-      console.log("Month statistics: " + this.generalStatistics);
-    },
+        this.generalStatistics = data;
+        console.log("Month statistics: " + this.generalStatistics);
+      },
       error => {
-      console.log(error.error.message)
+        console.log(error.error.message)
       });
   }
 

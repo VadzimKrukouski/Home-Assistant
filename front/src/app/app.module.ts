@@ -21,16 +21,16 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} fro
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
-import {MatMomentDateModule, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule} from '@angular/material-moment-adapter';
 import {MomentUtcDateAdapter} from "./adapters/MomentUtcDateAdapter";
-import { StartBillsComponent } from './start-bills/start-bills.component';
-import { BillsInfoComponent } from './bills/bills-info/bills-info.component';
+import {StartBillsComponent} from './start-bills/start-bills.component';
+import {BillsInfoComponent} from './bills/bills-info/bills-info.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
-import { HotWaterComponent } from './meters/hot-water/hot-water.component';
-import { ColdWaterComponent } from './meters/cold-water/cold-water.component';
-import { ElectricityComponent } from './meters/electricity/electricity.component';
-import {ChartService} from "./service/chart.service";
-import { MonthInfoByTypeComponent } from './bills/month-info-by-type/month-info-by-type.component';
+import {HotWaterComponent} from './meters/hot-water/hot-water.component';
+import {ColdWaterComponent} from './meters/cold-water/cold-water.component';
+import {ElectricityComponent} from './meters/electricity/electricity.component';
+import {MonthInfoByTypeComponent} from './bills/month-info-by-type/month-info-by-type.component';
+import {NavButtonComponent} from './buttons/home-button/nav-button.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import { MonthInfoByTypeComponent } from './bills/month-info-by-type/month-info-
     HotWaterComponent,
     ColdWaterComponent,
     ElectricityComponent,
-    MonthInfoByTypeComponent
+    MonthInfoByTypeComponent,
+    NavButtonComponent
   ],
   imports: [
     BrowserModule,

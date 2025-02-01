@@ -62,16 +62,8 @@
 </div>
 <br/>
 <br/>
-<div class="container">
-  <div class="row">
-    <button type="button" (click)="return()" class="btn btn--default btn--size-XL center">Back</button>
-  </div>
-</div>
+<app-nav-button [targetRoute]="'/meters'"></app-nav-button>
 <br>
-<div class="container">
-  <div class="row">
-    <button type="button" (click)="returnToHomePage()" class="btn btn--default btn--size-XL center">To Homepage</button>
-  </div>
-</div>
+<app-nav-button [label]="'To Homepage'"></app-nav-button>
 </body>
 

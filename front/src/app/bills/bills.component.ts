@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import {BillsControllerService} from "../api/bills-controller.service";
 import {DateAdapter, MAT_DATE_LOCALE} from "@angular/material/core";
@@ -49,20 +48,11 @@ export class BillsComponent implements OnInit {
   public date: string;
   public description: string;
 
-  constructor(private router: Router,
-              private billsService: BillsControllerService
+  constructor(private billsService: BillsControllerService
   ) {
   }
 
   ngOnInit(): void {
-  }
-
-  return() {
-    this.router.navigate(['/bills'])
-  }
-
-  returnToHomePage() {
-    this.router.navigate(['/start'])
   }
 
   getStoreName(val: string) {

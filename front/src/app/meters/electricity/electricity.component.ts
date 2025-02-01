@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
 import {ElectricityDto} from "../../models/ElectricityDto";
 import {ElectricityControllerService} from "../../api/electricity-controller.service";
 import {NgForm} from "@angular/forms";
@@ -14,8 +13,7 @@ export class ElectricityComponent implements OnInit {
   meters: ElectricityDto[] = [];
   chart: any;
 
-  constructor(private router: Router,
-              private electricityService: ElectricityControllerService,
+  constructor(private electricityService: ElectricityControllerService,
               private chartService: ChartService) {
   }
 
@@ -40,14 +38,6 @@ export class ElectricityComponent implements OnInit {
       meterReading: f.value.meterReading
     });
     f.resetForm();
-  }
-
-  return() {
-    this.router.navigate(['/meters'])
-  }
-
-  returnToHomePage() {
-    this.router.navigate(['/start'])
   }
 
   getChart() {

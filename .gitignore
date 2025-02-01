@@ -53,11 +53,13 @@ scripts/IB/IB_DEPOSIT/IB_Page_Login.c
 .idea
 .*\.iml
 *.iml
+.PVS-Studio
 
 # Gradle files
 target
 .gradle
 /build/
+./front/build
 
 # Ignore Gradle GUI config
 gradle-app.setting

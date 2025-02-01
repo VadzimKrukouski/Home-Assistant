@@ -1,5 +1,4 @@
 import {Component, Injectable, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
 import {WaterMetersControllerService} from "../api/water-meters-controller.service";
 import {WaterMeterDto} from "../models/waterMeterDto";
 
@@ -18,32 +17,10 @@ export class MetersComponent implements OnInit {
   meters: WaterMeterDto[] = [];
   totalElements: number = 0;
 
-  constructor(private router: Router,
-              private waterService: WaterMetersControllerService) {
+  constructor(private waterService: WaterMetersControllerService) {
   }
 
   ngOnInit(): void {
-  }
-
-
-  openMetersPage() {
-
-  }
-
-  dataHotWater() {
-    this.router.navigate(['/hot-water-data'])
-  }
-
-  return() {
-    this.router.navigate(['/start'])
-  }
-
-  dataColdWater() {
-    this.router.navigate(['/cold-water-data'])
-  }
-
-  dataElectricity() {
-    this.router.navigate(['/electricity-data'])
   }
 
   getData(request) {
@@ -57,7 +34,7 @@ export class MetersComponent implements OnInit {
         });
   }
 
-  public findMetersData(request) : WaterMeterDto[] {
+  public findMetersData(request): WaterMeterDto[] {
     this.getData(request);
     return this.meters;
   }

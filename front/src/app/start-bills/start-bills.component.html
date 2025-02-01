@@ -1,25 +1,9 @@
 <body>
-<div class="container">
-  <div class="row">
-    <button type="button" (click)="formDataBills()" class="btn btn--default btn--size-XL center" >Fill bills data</button>
-  </div>
-</div>
+<app-nav-button [targetRoute]="'/formDataBills'" [label]="'Fill bills data'"></app-nav-button>
 <br>
-<div class="container">
-  <div class="row">
-    <button (click)="infoBills()" class="btn btn--default btn--size-XL center" >Get statistic by bills</button>
-  </div>
-</div>
+<app-nav-button [targetRoute]="'/infoBills'" [label]="'Get statistic by bills'"></app-nav-button>
 <br>
-<div class="container">
-  <div class="row">
-    <button (click)="monthStatistic()" class="btn btn--default btn--size-XL center" >Get month statistic by bills type</button>
-  </div>
-</div>
+<app-nav-button [targetRoute]="'/monthStatistic'" [label]="'Get month statistic by bills type'"></app-nav-button>
 <br>
-<div class="container">
-  <div class="row">
-    <button type="button" (click)="returnToHomePage()" class="btn btn--default btn--size-XL center">To Homepage</button>
-  </div>
-</div>
+<app-nav-button></app-nav-button>
 </body>

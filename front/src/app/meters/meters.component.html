@@ -1,26 +1,10 @@
 <body>
-<div class="container">
-  <div class="row">
-    <button type="button" (click)="dataElectricity()" class="btn btn--default btn--size-XL center" >Electricity</button>
-  </div>
-</div>
+<app-nav-button [targetRoute]="'/electricity-data'" [label]="'Electricity'"></app-nav-button>
 <br>
-<div class="container">
-  <div class="row">
-    <button type="button" (click)="dataHotWater()" class="btn btn--default btn--size-XL center" >Hot water</button>
-  </div>
-</div>
+<app-nav-button [targetRoute]="'/hot-water-data'" [label]="'Hot water'"></app-nav-button>
 <br>
-<div class="container">
-  <div class="row">
-    <button type="button" (click)="dataColdWater()" class="btn btn--default btn--size-XL center" >Cold Water</button>
-  </div>
-</div>
+<app-nav-button [targetRoute]="'/cold-water-data'" [label]="'Cold water'"></app-nav-button>
 <br>
-<div class="container">
-  <div class="row">
-    <button type="button" (click)="return()" class="btn btn--default btn--size-XL center" >Back</button>
-  </div>
-</div>
+<app-nav-button></app-nav-button>
 </body>
 
