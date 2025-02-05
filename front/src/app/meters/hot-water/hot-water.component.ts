@@ -23,7 +23,6 @@ export class HotWaterComponent implements OnInit {
     this.waterService.getData(request)
       .subscribe(data => {
           this.meters = data;
-          console.log("Meters: " + this.meters);
         },
         error => {
           console.log(error.error.message);

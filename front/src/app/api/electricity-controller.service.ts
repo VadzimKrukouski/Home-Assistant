@@ -12,7 +12,6 @@ export class ElectricityControllerService {
   }
 
   public save(dto: ElectricityDto): Subscription {
-    console.log("Create electricity meter, dto = " + dto)
     return this.http.post<ElectricityDto>(`${this.baseUrl}/electricity-meter`, dto, {
       headers: {
         'Content-Type': 'application/json'

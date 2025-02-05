@@ -23,6 +23,11 @@ spring:
     locations: classpath:db/migration
   mvc:
     dispatch-options-request: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8484/realms/ha-realm/protocol/openid-connect/certs
 
 client:
     url: http://localhost:4200

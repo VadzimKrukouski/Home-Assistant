@@ -19,11 +19,37 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .anyRequest().permitAll()
+        http.cors()
+                .configurationSource(request -> {
+                    CorsConfiguration cors = new CorsConfiguration();
+                    cors.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+                    cors.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "PUT", "DELETE"));
+                    cors.setAllowedHeaders(Arrays.asList("*"));
+                    cors.setAllowCredentials(true);
+                    return cors;
+                })
                 .and()
-                .csrf().disable()
-                .cors();
+                .authorizeRequests(authorize -> {
+                    try {
+                        authorize
+                                .anyRequest()
+                                .authenticated()
+                                .and()
+                                .oauth2ResourceServer()
+                                .jwt()
+                                .jwtAuthenticationConverter(
+                                        new KeycloakJwtAuthenticationConverter()
+                                );
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+//        http.authorizeRequests()
+//                .anyRequest().permitAll()
+//                .and()
+//                .csrf().disable()
+//                .cors();
 
         return http.build();
     }

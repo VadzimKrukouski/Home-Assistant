@@ -27,13 +27,10 @@ export class BillsInfoComponent implements OnInit {
   }
 
   private getBills(request) {
-    console.log("Begin found")
     this.billsService.getAll(request)
       .subscribe(data => {
           this.bills = data['content'];
-          console.log("Bills: " + this.bills);
           this.totalElements = data['totalElements']
-          console.log("Total: " + this.totalElements);
         },
         error => {
           console.log(error.error.message);
@@ -44,7 +41,6 @@ export class BillsInfoComponent implements OnInit {
     this.statisticService.getGeneralStatisticByMonth().subscribe(data => {
         this.generalStatistics = data;
         this.generalStatistics.forEach(t => t.date = (t.date?.substring(0, 7)));
-        console.log("Statistics: " + this.generalStatistics);
       },
       error => {
         console.log(error.error.message);

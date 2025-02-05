@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DataComponent} from './data/data.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, provideHttpClient, withInterceptors} from "@angular/common/http";
 import {StartComponent} from './start/start.component';
 import {MetersComponent} from './meters/meters.component';
 import {BillsComponent} from './bills/bills.component';
@@ -32,6 +32,8 @@ import {ElectricityComponent} from './meters/electricity/electricity.component';
 import {MonthInfoByTypeComponent} from './bills/month-info-by-type/month-info-by-type.component';
 import {NavButtonComponent} from './buttons/nav-button/nav-button.component';
 import { ChartButtonComponent } from './buttons/chart-button/chart-button.component';
+import { AuthComponent } from './start/auth/auth.component';
+import {securityInterceptor} from "./service/security/security-interceptor";
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { ChartButtonComponent } from './buttons/chart-button/chart-button.compon
     ElectricityComponent,
     MonthInfoByTypeComponent,
     NavButtonComponent,
-    ChartButtonComponent
+    ChartButtonComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ import { ChartButtonComponent } from './buttons/chart-button/chart-button.compon
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
     { provide: DateAdapter, useClass: MomentUtcDateAdapter },
+    provideHttpClient(withInterceptors([securityInterceptor]))
   ],
   bootstrap: [AppComponent]
 })

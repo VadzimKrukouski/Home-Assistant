@@ -12,7 +12,6 @@ export class WaterMetersControllerService {
   }
 
   public save(dto: WaterMeterDto): Subscription {
-    console.log("Create water meter, dto = " + dto)
     return this.http.post<WaterMeterDto>(`${this.baseUrl}/water-meter`, dto, {
       headers: {
         'Content-Type': 'application/json'

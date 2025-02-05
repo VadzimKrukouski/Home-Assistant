@@ -12,7 +12,6 @@ export class BillsControllerService {
   }
 
   public save(dto: BillsDto): Subscription {
-    console.log("Create bills, dto = " + dto)
     return this.http.post<BillsDto>(`${this.baseUrl}/bills`, dto, {
       headers: {
         'Content-Type': 'application/json'

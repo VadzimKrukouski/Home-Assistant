@@ -22,7 +22,6 @@ export class ElectricityComponent implements OnInit {
     this.electricityService.getData()
       .subscribe(data => {
           this.meters = data;
-          console.log("Electricity: " + this.meters);
         },
         error => {
           console.log(error.error.message);

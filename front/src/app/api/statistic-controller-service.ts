@@ -20,7 +20,6 @@ export class StatisticControllerService {
   }
 
   public getMonthStatisticByType(type: String) : Observable<any>{
-    console.log("Type: " + type)
     return this.http.get(`${this.baseUrl}/statistic/monthByType/` + type,
       {
         headers: {

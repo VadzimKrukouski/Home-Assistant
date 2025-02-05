@@ -1,0 +1,19 @@
+<div class="security">
+  <button
+    data-testid="btn-sign-in"
+    mat-raised-button
+    (click)="securityStore.signIn()"
+  >
+    Sign In
+  </button>
+  <div class="flex items-center">
+    <p class="profile" data-testid="p-username">Welcome!</p>
+    <button
+      (click)="securityStore.signOut()"
+      data-testid="btn-sign-out"
+      mat-raised-button
+    >
+      Sign Out
+    </button>
+  </div>
+</div>

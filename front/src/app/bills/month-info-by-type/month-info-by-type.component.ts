@@ -43,7 +43,6 @@ export class MonthInfoByTypeComponent implements OnInit {
   onSubmit(f: NgForm) {
     this.statisticService.getMonthStatisticByType(f.value.typeBill).subscribe(data => {
         this.generalStatistics = data;
-        console.log("Month statistics: " + this.generalStatistics);
       },
       error => {
         console.log(error.error.message)
