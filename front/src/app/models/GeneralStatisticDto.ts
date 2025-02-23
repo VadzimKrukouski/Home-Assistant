@@ -1,4 +1,5 @@
-export class GeneralStatisticDto{
-  date?: string;
+export interface GeneralStatisticDto {
+  date: Date;
   sum?: number;
+  formattedDate: string;
 }

@@ -5,7 +5,7 @@
       <div class="container">
         <div class="card material-table">
           <div class="table-header">
-            <span class="table-title">Electricity meters data</span>
+            <span class="table-title">{{title}}</span>
           </div>
           <table class="datatable">
             <thead>
@@ -29,7 +29,7 @@
   </mat-tab>
   <mat-tab label="Fill Data">
     <ng-template matTabContent>
-      <h1>Electricity meter data</h1>
+      <h1>{{title}}</h1>
       <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
         <div class="group">
           <input name="meterReading" ngModel required>
@@ -50,9 +50,12 @@
     </ng-template>
   </mat-tab>
 </mat-tab-group>
+<br>
 <app-chart-button [chartData]="meters"></app-chart-button>
+<br/>
 <br/>
 <app-nav-button [targetRoute]="'/meters'"></app-nav-button>
 <br>
 <app-nav-button [label]="'To Homepage'"></app-nav-button>
 </body>
+

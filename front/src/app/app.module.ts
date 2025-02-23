@@ -34,6 +34,7 @@ import {NavButtonComponent} from './buttons/nav-button/nav-button.component';
 import { ChartButtonComponent } from './buttons/chart-button/chart-button.component';
 import { AuthComponent } from './start/auth/auth.component';
 import {securityInterceptor} from "./service/security/security-interceptor";
+import { WaterComponent } from './meters/water/water.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {securityInterceptor} from "./service/security/security-interceptor";
     MonthInfoByTypeComponent,
     NavButtonComponent,
     ChartButtonComponent,
-    AuthComponent
+    AuthComponent,
+    WaterComponent
   ],
   imports: [
     BrowserModule,

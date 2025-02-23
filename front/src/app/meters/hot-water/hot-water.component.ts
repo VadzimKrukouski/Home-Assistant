@@ -1,40 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForm} from "@angular/forms";
 import {WaterMetersControllerService} from "../../api/water-meters-controller.service";
 import {TypeWater} from "../meters.component";
-import {WaterMeterDto} from "../../models/waterMeterDto";
+import {WaterComponent} from "../water/water.component";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-hot-water',
   templateUrl: './hot-water.component.html',
-  styleUrls: ['./hot-water.component.css']
+  styleUrls: ['./hot-water.component.css'],
+  providers: [DatePipe]
 })
-export class HotWaterComponent implements OnInit {
-  meters: WaterMeterDto[] = [];
+export class HotWaterComponent extends WaterComponent implements OnInit {
+  typeWater: TypeWater = TypeWater.HOT;
 
-  constructor(private waterService: WaterMetersControllerService) {
+  constructor(waterService: WaterMetersControllerService,
+              datePipe: DatePipe) {
+    super(waterService, datePipe)
   }
 
   ngOnInit(): void {
-    this.getData({type: "HOT"})
-  }
+    // super.getData({type: this.typeWaterInput.toString()})
 
-  getData(request) {
-    this.waterService.getData(request)
-      .subscribe(data => {
-          this.meters = data;
-        },
-        error => {
-          console.log(error.error.message);
-        });
-  }
-
-  onSubmit(f: NgForm) {
-    this.waterService.save({
-      typeWater: TypeWater.HOT,
-      meterReading: f.value.meterReading,
-      date: new Date(f.value.date).toISOString()
-    });
-    f.resetForm();
   }
 }

@@ -5,6 +5,7 @@ import {DateAdapter, MAT_DATE_LOCALE} from "@angular/material/core";
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter} from "@angular/material-moment-adapter";
 import {NgForm} from "@angular/forms";
 import {TypeBills} from "../bills.component";
+import {DatePipe} from "@angular/common";
 
 export const TypeMapping: Record<TypeBills, string> = {
   [TypeBills.PRODUCTS]: "PRODUCTS",
@@ -24,7 +25,8 @@ export const TypeMapping: Record<TypeBills, string> = {
   styleUrls: ['./month-info-by-type.component.css'],
   providers: [
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: false}}
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: false}},
+    [DatePipe]
   ]
 })
 export class MonthInfoByTypeComponent implements OnInit {
@@ -34,7 +36,8 @@ export class MonthInfoByTypeComponent implements OnInit {
   public TypeMapping = TypeMapping;
   chart: any;
 
-  constructor(private statisticService: StatisticControllerService) {
+  constructor(private statisticService: StatisticControllerService,
+              private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -42,7 +45,14 @@ export class MonthInfoByTypeComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     this.statisticService.getMonthStatisticByType(f.value.typeBill).subscribe(data => {
-        this.generalStatistics = data;
+        this.generalStatistics = data.map(item => ({
+          ...item,
+          date: new Date(item.date),
+          formattedDate: this.datePipe.transform(new Date(item.date), 'MMM yyyy')
+        }));
+        this.generalStatistics.sort((a, b) => {
+          return b.date.getTime() - a.date.getTime()
+        })
       },
       error => {
         console.log(error.error.message)

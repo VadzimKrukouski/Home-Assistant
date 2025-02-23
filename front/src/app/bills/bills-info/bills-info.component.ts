@@ -5,11 +5,13 @@ import {BillsDto} from "../../models/billsDto";
 import {PageEvent} from "@angular/material/paginator";
 import {StatisticControllerService} from "../../api/statistic-controller-service";
 import {GeneralStatisticDto} from "../../models/GeneralStatisticDto";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-bills-info',
   templateUrl: './bills-info.component.html',
-  styleUrls: ['./bills-info.component.css']
+  styleUrls: ['./bills-info.component.css'],
+  providers: [DatePipe]
 })
 export class BillsInfoComponent implements OnInit {
   bills: BillsDto[] = [];
@@ -18,7 +20,8 @@ export class BillsInfoComponent implements OnInit {
 
   constructor(private router: Router,
               private billsService: BillsControllerService,
-              private statisticService: StatisticControllerService) {
+              private statisticService: StatisticControllerService,
+              private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -39,8 +42,14 @@ export class BillsInfoComponent implements OnInit {
 
   private getGeneralStatistic() {
     this.statisticService.getGeneralStatisticByMonth().subscribe(data => {
-        this.generalStatistics = data;
-        this.generalStatistics.forEach(t => t.date = (t.date?.substring(0, 7)));
+        this.generalStatistics = data.map(item => ({
+          ...item,
+          date: new Date(item.date),
+          formattedDate: this.datePipe.transform(new Date(item.date), 'MMM yyyy')
+        }));
+        this.generalStatistics.sort((a, b) => {
+          return b.date.getTime() - a.date.getTime()
+        })
       },
       error => {
         console.log(error.error.message);

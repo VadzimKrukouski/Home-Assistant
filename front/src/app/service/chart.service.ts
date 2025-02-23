@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Chart} from "chart.js/auto";
+import {GeneralStatisticDto} from "../models/GeneralStatisticDto";
 
 @Injectable({providedIn: 'root'})
 export class ChartService {
@@ -7,11 +8,13 @@ export class ChartService {
   private labeldata: any[] = [];
   private realdata: any[] = [];
 
-  createChart(data: any[], label: string, valueKey: keyof any) : Chart {
-    this.labeldata = []
-    this.realdata = []
+  createChart(data: any[], label: string, valueKey: keyof any): Chart {
+    if (this.isGeneralStatisticArray(data)) {
+      console.log("sort.....")
+      data.sort((a, b) => a.date.getTime() - b.date.getTime());
+    }
     data.forEach(item => {
-      this.labeldata.push(item.date);
+      this.labeldata.push(item.formattedDate);
       this.realdata.push(item[valueKey]);
     })
     this.chart = new Chart("MyChart", {
@@ -33,29 +36,9 @@ export class ChartService {
     return this.chart;
   }
 
-  createMonthlyChart(data: any): Chart {
-    this.labeldata = []
-    this.realdata = []
-    data.forEach(meter => {
-      this.labeldata.push(meter.date);
-      this.realdata.push(meter.sum);
-    })
-    this.chart = new Chart("MyChart", {
-      type: 'bar',
-      data: {
-        labels: this.labeldata,
-        datasets: [
-          {
-            label: 'Sum',
-            data: this.realdata,
-            backgroundColor: 'red',
-          }
-        ]
-      },
-      options: {
-        aspectRatio: 2
-      }
-    });
-    return this.chart;
+  private isGeneralStatisticArray(data: any[]): data is GeneralStatisticDto[] {
+    return data.every(item => item &&
+      (typeof item.sum === 'number' || item.sum === undefined)
+    );
   }
 }
