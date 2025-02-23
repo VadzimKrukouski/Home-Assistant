@@ -1,19 +1,17 @@
+<body>
+<h1>Welcome to home assistant!</h1>
 <div class="security">
   <button
-    data-testid="btn-sign-in"
-    mat-raised-button
+    class="btn btn--default btn--size-XL center"
     (click)="securityStore.signIn()"
   >
     Sign In
   </button>
-  <div class="flex items-center">
-    <p class="profile" data-testid="p-username">Welcome!</p>
     <button
+      class="btn btn--default btn--size-XL center"
       (click)="securityStore.signOut()"
-      data-testid="btn-sign-out"
-      mat-raised-button
     >
       Sign Out
     </button>
-  </div>
 </div>
+</body>

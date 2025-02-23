@@ -9,7 +9,7 @@ h1 {
 }
 
 ::ng-deep mat-form-field {
-  width: 30%;
+  width: 33%;
 }
 
 ::ng-deep .mat-datepicker-content .mat-calendar {
@@ -27,6 +27,7 @@ input {
   padding: 10px 10px 10px 5px;
   display: inline-block;
   width: 300px;
+  border-radius: 0.3rem;
 }
 
 input:focus {
@@ -134,49 +135,6 @@ input:focus ~ .highlight {
     width: 0;
     background: transparent;
   }
-}
-
-.custom-select {
-  min-width: 350px;
-  position: relative;
-}
-
-select {
-  appearance: none;
-  /*  safari  */
-  -webkit-appearance: none;
-  /*  other styles for aesthetics */
-  width: 20%;
-  font-size: 1.15rem;
-  padding: 0.675em 6em 0.675em 1em;
-  background-color: #fff;
-  border: 1px solid #caced1;
-  color: #000;
-  /*cursor: progress;*/
-}
-
-.custom-select::before,
-.custom-select::after {
-  --size: 0.3rem;
-  content: '';
-  position: absolute;
-  right: 1rem;
-  pointer-events: none;
-}
-
-.custom-select::before {
-  border-left: var(--size) solid transparent;
-  border-right: var(--size) solid transparent;
-  border-bottom: var(--size) solid black;
-  top: 40%;
-}
-
-.custom-select::after {
-  border-left: var(--size) solid transparent;
-  border-right: var(--size) solid transparent;
-  border-top: var(--size) solid black;
-  top: 55%;
-  content: '';
 }
 
 * {
