@@ -8,6 +8,7 @@ import {Chart} from "chart.js/auto";
   styleUrls: ['./chart-button.component.css']
 })
 export class ChartButtonComponent {
+
   @Input() chartData: any[] = []
   @Input() valueKey: string = 'diff'
   @Input() label: string = 'Meters'
