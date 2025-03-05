@@ -3,7 +3,6 @@ package com.example.back.dto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Data

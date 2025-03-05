@@ -2,7 +2,6 @@ package com.example.back.controller;
 
 import com.example.back.dto.BaseDto;
 import com.example.back.service.BaseService;
-import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

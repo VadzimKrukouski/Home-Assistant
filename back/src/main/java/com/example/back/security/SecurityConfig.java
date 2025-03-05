@@ -1,6 +1,5 @@
 package com.example.back.security;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,46 +9,26 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.Arrays;
+import java.util.List;
+
+import static org.springframework.security.config.Customizer.withDefaults;
+
 
 @Configuration
 @EnableWebSecurity
-//@EnableAutoConfiguration
 public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors()
-                .configurationSource(request -> {
-                    CorsConfiguration cors = new CorsConfiguration();
-                    cors.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
-                    cors.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "PUT", "DELETE"));
-                    cors.setAllowedHeaders(Arrays.asList("*"));
-                    cors.setAllowCredentials(true);
-                    return cors;
-                })
-                .and()
-                .authorizeRequests(authorize -> {
-                    try {
-                        authorize
-                                .anyRequest()
-                                .authenticated()
-                                .and()
-                                .oauth2ResourceServer()
-                                .jwt()
-                                .jwtAuthenticationConverter(
-                                        new KeycloakJwtAuthenticationConverter()
-                                );
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                });
-
-//        http.authorizeRequests()
-//                .anyRequest().permitAll()
-//                .and()
-//                .csrf().disable()
-//                .cors();
+        http.cors(withDefaults())
+                .authorizeHttpRequests(authorize -> authorize
+                        .anyRequest().authenticated()
+                )
+                .oauth2ResourceServer(oauth2 -> oauth2
+                        .jwt(jwt -> jwt
+                                .jwtAuthenticationConverter(new KeycloakJwtAuthenticationConverter())
+                        )
+                );
 
         return http.build();
     }
@@ -57,9 +36,9 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
-        corsConfiguration.setAllowedMethods(Arrays.asList("*"));
-        corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
+        corsConfiguration.setAllowedHeaders(List.of("*"));
+        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "OPTIONS", "PUT", "DELETE"));
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:4200"));
         UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
         return urlBasedCorsConfigurationSource;

@@ -9,30 +9,34 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toSet;
 
 public class KeycloakJwtAuthenticationConverter implements Converter<Jwt, AbstractAuthenticationToken> {
+
     @Override
-    public AbstractAuthenticationToken convert(Jwt source) {
-        return new JwtAuthenticationToken(
-                source,
-                Stream.concat(
-                                new JwtGrantedAuthoritiesConverter().convert(source).stream(),
-                                extractResourceRoles(source).stream())
-                        .collect(toSet()));
+    public AbstractAuthenticationToken convert(Jwt jwt) {
+        Set<GrantedAuthority> authorities = Stream.concat(
+                        new JwtGrantedAuthoritiesConverter().convert(jwt).stream(),
+                        extractResourceRoles(jwt).stream())
+                .collect(Collectors.toSet());
+        return new JwtAuthenticationToken(jwt, authorities);
     }
 
     private Collection<? extends GrantedAuthority> extractResourceRoles(Jwt jwt) {
-        HashMap<Object, Object> resourceAccess = new HashMap<>(jwt.getClaim("resource_access"));
+        Map<String, Object> resourceAccess = jwt.getClaim("resource_access");
+        if (resourceAccess == null) return Collections.emptySet();
 
         Map<String, List<String>> eternal = (Map<String, List<String>>) resourceAccess.get("ha");
+        if (eternal == null) return Collections.emptySet();
 
-        ArrayList<String> roles = (ArrayList<String>) eternal.get("roles");
+        List<String> roles = eternal.get("roles");
+        if (roles == null) return Collections.emptySet();
 
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role.replace("-", "_")))
-                .collect(toSet());
+                .collect(Collectors.toSet());
     }
 }

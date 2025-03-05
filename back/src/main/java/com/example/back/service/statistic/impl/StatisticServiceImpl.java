@@ -25,6 +25,7 @@ public class StatisticServiceImpl implements StatisticService {
         List<GeneralStatisticQueryData> statisticByMonth = billsRepository.getGeneralStatisticByMonth();
         statisticByMonth.forEach(g -> {
             GeneralStatisticDto dto = new GeneralStatisticDto();
+            log.info("DAte " + g.getMonth());
             dto.setDate(g.getMonth());
             dto.setSum(g.getSum());
             generalStatisticDtos.add(dto);

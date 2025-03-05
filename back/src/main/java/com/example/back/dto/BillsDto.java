@@ -4,7 +4,6 @@ import com.example.back.entity.enums.TypeBills;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.math.BigDecimal;
 

@@ -2,9 +2,7 @@ package com.example.back.service.impl;
 
 import com.example.back.dto.BillsDto;
 import com.example.back.entity.Bills;
-import com.example.back.mapper.BaseMapper;
 import com.example.back.mapper.BillsMapper;
-import com.example.back.repository.BaseRepository;
 import com.example.back.repository.BillsRepository;
 import com.example.back.service.BillsService;
 import org.springframework.beans.factory.annotation.Autowired;
