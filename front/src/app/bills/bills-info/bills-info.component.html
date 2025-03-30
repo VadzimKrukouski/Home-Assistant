@@ -39,12 +39,14 @@
       <tr>
         <th scope="col">Date</th>
         <th scope="col">Sum</th>
+        <th scope="col">Income</th>
       </tr>
       </thead>
       <tbody>
       <tr scope="row" *ngFor="let statistic of generalStatistics">
         <td>{{statistic.formattedDate}}</td>
         <td>{{statistic.sum}}</td>
+        <td>{{statistic.income}}</td>
       </tr>
       </tbody>
     </table>

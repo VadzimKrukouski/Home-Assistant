@@ -35,6 +35,7 @@ import { ChartButtonComponent } from './buttons/chart-button/chart-button.compon
 import { AuthComponent } from './start/auth/auth.component';
 import {securityInterceptor} from "./service/security/security-interceptor";
 import { WaterComponent } from './meters/water/water.component';
+import { IncomeComponent } from './income/income.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { WaterComponent } from './meters/water/water.component';
     NavButtonComponent,
     ChartButtonComponent,
     AuthComponent,
-    WaterComponent
+    WaterComponent,
+    IncomeComponent
   ],
   imports: [
     BrowserModule,

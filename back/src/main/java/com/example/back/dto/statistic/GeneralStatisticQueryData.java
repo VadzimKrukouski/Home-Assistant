@@ -6,5 +6,8 @@ import java.time.LocalDate;
 public interface GeneralStatisticQueryData {
     LocalDate getMonth();
 
-    BigDecimal getSum();
+    BigDecimal getTotalBills();
+
+    BigDecimal getTotalIncome();
+
 }

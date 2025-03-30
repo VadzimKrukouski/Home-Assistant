@@ -12,6 +12,7 @@ import {ElectricityComponent} from "./meters/electricity/electricity.component";
 import {MonthInfoByTypeComponent} from "./bills/month-info-by-type/month-info-by-type.component";
 import {AuthComponent} from "./start/auth/auth.component";
 import {AuthGuard} from "./service/security/auth.guard";
+import {IncomeComponent} from "./income/income.component";
 
 const routes: Routes = [
   {path: '', component: AuthComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'hot-water-data', component: HotWaterComponent, canActivate: [() => inject(AuthGuard).canActivate()]},
   {path: 'cold-water-data', component: ColdWaterComponent, canActivate: [() => inject(AuthGuard).canActivate()]},
   {path: 'electricity-data', component: ElectricityComponent, canActivate: [() => inject(AuthGuard).canActivate()]},
-  {path: 'monthStatistic', component:MonthInfoByTypeComponent, canActivate: [() => inject(AuthGuard).canActivate()]}
+  {path: 'monthStatistic', component:MonthInfoByTypeComponent, canActivate: [() => inject(AuthGuard).canActivate()]},
+  {path: 'income', component: IncomeComponent, canActivate: [() => inject(AuthGuard).canActivate()]}
 ];
 
 @NgModule({

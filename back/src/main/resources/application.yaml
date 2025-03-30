@@ -16,11 +16,15 @@ spring:
     username: cwbp
     password: cwbp
   flyway:
-    table: flyway_version
     baseline-version: 0
     baseline-on-migrate: true
     schemas: public
     locations: classpath:db/migration
+    enabled: true
+    url: jdbc:postgresql://localhost:5432/ha
+    user: cwbp
+    password: cwbp
+    default-schema: public
   mvc:
     dispatch-options-request: true
   security:

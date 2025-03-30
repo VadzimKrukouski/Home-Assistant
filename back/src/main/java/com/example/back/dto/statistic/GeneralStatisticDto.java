@@ -9,4 +9,5 @@ import java.time.LocalDate;
 public class GeneralStatisticDto {
     private LocalDate date;
     private BigDecimal sum;
+    private BigDecimal income;
 }

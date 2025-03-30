@@ -27,7 +27,8 @@ public class StatisticServiceImpl implements StatisticService {
             GeneralStatisticDto dto = new GeneralStatisticDto();
             log.info("DAte " + g.getMonth());
             dto.setDate(g.getMonth());
-            dto.setSum(g.getSum());
+            dto.setSum(g.getTotalBills());
+            dto.setIncome(g.getTotalIncome());
             generalStatisticDtos.add(dto);
         });
         return generalStatisticDtos;
@@ -40,7 +41,7 @@ public class StatisticServiceImpl implements StatisticService {
         billsRepository.getStatisticByMonthAndType(type).forEach(s -> {
             MonthStatisticDto dto = new MonthStatisticDto();
             dto.setDate(s.getMonth());
-            dto.setSum(s.getSum());
+            dto.setSum(s.getTotalBills());
             monthStatisticDtos.add(dto);
         });
         return monthStatisticDtos;
