@@ -233,3 +233,11 @@ div.material-table table th:last-child,
 div.material-table table td:last-child {
   padding: 0 14px 0 0;
 }
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}

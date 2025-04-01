@@ -40,6 +40,7 @@
         <th scope="col">Date</th>
         <th scope="col">Sum</th>
         <th scope="col">Income</th>
+        <th scope="col">Diff</th>
       </tr>
       </thead>
       <tbody>
@@ -47,6 +48,9 @@
         <td>{{statistic.formattedDate}}</td>
         <td>{{statistic.sum}}</td>
         <td>{{statistic.income}}</td>
+        <td [ngClass]="((statistic.income ?? 0) - (statistic.sum ?? 0)) >= 0 ? 'positive' : 'negative'">
+          {{ (statistic.income ?? 0) - (statistic.sum ?? 0)}}
+        </td>
       </tr>
       </tbody>
     </table>
