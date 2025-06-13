@@ -6,6 +6,7 @@ import {PageEvent} from "@angular/material/paginator";
 import {StatisticControllerService} from "../../api/statistic-controller-service";
 import {GeneralStatisticDto} from "../../models/GeneralStatisticDto";
 import {DatePipe} from "@angular/common";
+import {PageRequest, PageResponse} from "../../models/page-request.model";
 
 @Component({
   selector: 'app-bills-info',
@@ -29,19 +30,22 @@ export class BillsInfoComponent implements OnInit {
     this.getGeneralStatistic();
   }
 
-  private getBills(request) {
+  private getBills(request: PageRequest) {
     this.billsService.getAll(request)
-      .subscribe(data => {
-          this.bills = data['content'];
-          this.totalElements = data['totalElements']
+      .subscribe({
+        next: (data: PageResponse<BillsDto>) => {
+          this.bills = data.content;
+          this.totalElements = data.totalElements;
         },
-        error => {
-          console.log(error.error.message);
-        });
+        error: (error) => {
+          console.error('Error fetching bills:', error);
+        }
+      });
   }
 
   private getGeneralStatistic() {
-    this.statisticService.getGeneralStatisticByMonth().subscribe(data => {
+    this.statisticService.getGeneralStatisticByMonth().subscribe({
+      next: (data) => {
         this.generalStatistics = data.map(item => ({
           ...item,
           date: new Date(item.date),
@@ -49,17 +53,20 @@ export class BillsInfoComponent implements OnInit {
         }));
         this.generalStatistics.sort((a, b) => {
           return b.date.getTime() - a.date.getTime()
-        })
+        });
       },
-      error => {
-        console.log(error.error.message);
-      });
+      error: (error) => {
+        console.error('Error fetching statistics:', error);
+      }
+    });
   }
 
   nextPage(event: PageEvent) {
-    const request = {};
-    request['page'] = event.pageIndex.toString();
-    request['size'] = event.pageSize.toString();
+    const request: PageRequest = {
+      page: event.pageIndex.toString(),
+      size: event.pageSize.toString(),
+      sort: "date,desc"
+    };
     this.getBills(request);
   }
 }

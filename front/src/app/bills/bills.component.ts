@@ -66,8 +66,16 @@ export class BillsComponent implements OnInit {
       typeBills: f.value.typeBill,
       date: this.fixDate(new Date(f.value.date)),
       description: f.value.description
+    }).subscribe({
+      next: (response) => {
+        console.log('Bill saved:', response);
+        f.resetForm();
+      },
+      error: (error) => {
+        console.error('Error saving bill:', error);
+        // You could add user notification here
+      }
     });
-    f.resetForm();
   }
 
   fixDate(date: Date): string {
