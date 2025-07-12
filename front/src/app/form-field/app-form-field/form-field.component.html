@@ -1,0 +1,11 @@
+<div class="group">
+  <ng-content></ng-content>
+  <span class="highlight"></span>
+  <span class="bar"></span>
+  <label *ngIf="label">{{ label }}</label>
+
+  <div *ngIf="control?.invalid && (control?.dirty || control?.touched || submitted)" class="invalid-feedback">
+    <div *ngIf="control?.errors?.['required']">{{ label }} is required.</div>
+    <div *ngIf="control?.errors?.['pattern']">Invalid {{ label?.toLowerCase() }} format.</div>
+  </div>
+</div>

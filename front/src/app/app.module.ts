@@ -9,7 +9,6 @@ import {HttpClientModule, provideHttpClient, withInterceptors} from "@angular/co
 import {StartComponent} from './start/start.component';
 import {MetersComponent} from './meters/meters.component';
 import {BillsComponent} from './bills/bills.component';
-import {FormFieldComponent} from './form-field/form-field.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -36,6 +35,9 @@ import { AuthComponent } from './start/auth/auth.component';
 import {securityInterceptor} from "./service/security/security-interceptor";
 import { WaterComponent } from './meters/water/water.component';
 import { IncomeComponent } from './income/income.component';
+import {FormFieldComponent} from "./form-field/app-form-field/form-field.component";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { NavBarComponent } from './buttons/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,6 @@ import { IncomeComponent } from './income/income.component';
     StartComponent,
     MetersComponent,
     BillsComponent,
-    FormFieldComponent,
     DynamicFormComponent,
     DynamicFormPlusComponent,
     StartBillsComponent,
@@ -57,7 +58,9 @@ import { IncomeComponent } from './income/income.component';
     ChartButtonComponent,
     AuthComponent,
     WaterComponent,
-    IncomeComponent
+    IncomeComponent,
+    FormFieldComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,8 @@ import { IncomeComponent } from './income/income.component';
     MatButtonToggleModule,
     MatMomentDateModule,
     MatPaginatorModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },

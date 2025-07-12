@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {BillsControllerService} from "../api/bills-controller.service";
 import {DateAdapter, MAT_DATE_LOCALE} from "@angular/material/core";
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter} from "@angular/material-moment-adapter";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 export enum TypeBills {
   PRODUCTS = "PRODUCTS",
@@ -47,8 +48,10 @@ export class BillsComponent implements OnInit {
   public types = Object.values(TypeBills);
   public date: string;
   public description: string;
+  submitted = false;
 
-  constructor(private billsService: BillsControllerService
+  constructor(private billsService: BillsControllerService,
+              private snackBar: MatSnackBar
   ) {
   }
 
@@ -60,6 +63,10 @@ export class BillsComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
+    this.submitted = true;
+    if (f.invalid) {
+      return;
+    }
     this.billsService.save({
       storeName: f.value.storeName,
       sum: f.value.sum,
@@ -69,11 +76,13 @@ export class BillsComponent implements OnInit {
     }).subscribe({
       next: (response) => {
         console.log('Bill saved:', response);
+        this.snackBar.open('Bill was successfully saved', 'Close', {duration: 3000})
         f.resetForm();
+        this.submitted = false;
       },
       error: (error) => {
+        this.snackBar.open('Something went wrong', 'Close', {duration: 3000})
         console.error('Error saving bill:', error);
-        // You could add user notification here
       }
     });
   }

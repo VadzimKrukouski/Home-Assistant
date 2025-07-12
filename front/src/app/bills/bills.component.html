@@ -1,24 +1,18 @@
 <body>
 <h1>Bills data</h1>
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-  <div class="group">
-    <input name="storeName" ngModel required #first="ngModel">
-    <span class="highlight"></span>
-    <span class="bar"></span>
-    <label>Store name</label>
-  </div>
-  <div class="group">
-    <input name="sum" ngModel required>
-    <span class="highlight"></span>
-    <span class="bar"></span>
-    <label>Sum</label>
-  </div>
-  <div class="group">
-    <input name="description" ngModel required>
-    <span class="highlight"></span>
-    <span class="bar"></span>
-    <label>Description</label>
-  </div>
+  <app-form-field label="Store name" [submitted]="submitted">
+    <input name="storeName" ngModel required #storeName="ngModel"
+           [ngClass]="{'is-invalid': storeName.invalid && (storeName.dirty || storeName.touched || submitted)}">
+  </app-form-field>
+  <app-form-field label="Sum" [submitted]="submitted">
+    <input name="sum" ngModel required pattern="^\d+(\.\d+)?$" #sum="ngModel"
+           [ngClass]="{'is-invalid': sum.invalid && (sum.dirty || sum.touched || submitted)}">
+  </app-form-field>
+  <app-form-field label="Description" [submitted]="submitted">
+    <input name="description" ngModel required #description="ngModel"
+           [ngClass]="{'is-invalid': description.invalid && (description.dirty || description.touched || submitted)}">
+  </app-form-field>
   <div class="custom-select">
     <select name="typeBill" ngModel>
       <option *ngFor="let typeBill of types" [ngValue]="typeBill">{{TypeMapping[typeBill]}}</option>
@@ -33,12 +27,9 @@
       <mat-datepicker #picker startView="month"></mat-datepicker>
     </mat-form-field>
   </div>
-  <button type="submit" class="btn btn--default btn--size-XL center">Submit</button>
+  <button type="submit" [disabled]="f.invalid" class="btn btn--default btn--size-XL center">Submit</button>
 </form>
-<br>
-<app-nav-button [targetRoute]="'/bills'"></app-nav-button>
-<br>
-<app-nav-button [label]="'To Homepage'"></app-nav-button>
+<app-nav-bar></app-nav-bar>
 </body>
 
 
