@@ -3,13 +3,15 @@ version: '3.8'
 services:
   postgres:
     container_name: postgres
-    image: library/postgres
+    image: postgres:16
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: keycloak_db
     ports:
       - "5432:5432"
+    volumes:
+      - keycloak_postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
 
   keycloak:
@@ -17,11 +19,11 @@ services:
     command: start-dev
     container_name: keycloak
     environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
-      DB_DATABASE: keycloak_db
-      DB_USER: "postgres"
-      DB_PASSWORD: "postgres"
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres
+      KC_DB_URL_DATABASE: keycloak_db
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: postgres
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin_password
     ports:
@@ -30,3 +32,6 @@ services:
       - postgres
     links:
       - "postgres:postgres"
+
+volumes:
+  keycloak_postgres_data:
